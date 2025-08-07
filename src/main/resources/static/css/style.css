@@ -1,0 +1,343 @@
+/* Simplified CSS for PSNEWS - Ensuring Content Visibility */
+
+/* Basic reset and body styles */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  background: #181a1b !important;
+  color: #ffffff !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+/* Container and layout */
+.container {
+  background: transparent !important;
+  position: relative;
+  z-index: 10;
+  padding: 2rem 0;
+}
+
+#news-container {
+  background: transparent !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Card styles */
+.card, .news-card-class {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+    height: 100%;
+}
+
+.card-title, .news-title {
+  color: #ffffff !important;
+  font-size: 1.125rem;
+	font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.card-text, .news-fragment p, .mb-2 {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.text-muted, .small {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-link {
+  color: #ffb366 !important;
+  font-size: 0.875rem;
+	text-decoration: none;
+  margin-top: auto;
+}
+
+.btn-link:hover {
+  color: #ffd166 !important;
+}
+
+/* Image styles */
+.card img {
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+/* Pagination styles */
+.pagination {
+  gap: 0.5rem;
+  margin: 2rem 0;
+  padding: 0;
+  display: flex;
+	justify-content: center;
+  list-style: none;
+}
+
+.pagination .page-item {
+  margin: 0;
+}
+
+.pagination .page-link {
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.28);
+  color: #ffb366;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-width: 3rem;
+  text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pagination .page-link:hover {
+  background: rgba(255, 179, 102, 0.2);
+  border-color: #ffb366;
+  color: #ffd166;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 179, 102, 0.3);
+}
+
+.pagination .page-item.active .page-link {
+  background: linear-gradient(135deg, #ffb366 0%, #ff8800 100%);
+  border-color: #ffb366;
+  color: #1a1a1a;
+    font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 179, 102, 0.4);
+}
+
+.pagination .page-item.disabled .page-link {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Loading spinner */
+#loading-spinner {
+  background: rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.25rem;
+}
+
+.spinner-border.text-warning {
+  color: #ffb366 !important;
+  border-color: rgba(255, 179, 102, 0.3);
+  border-right-color: #ffb366;
+}
+
+/* Load more button */
+#load-more-btn {
+  background: rgba(255,255,255,0.18);
+  border: 2px solid #ffb366;
+  color: #ffb366;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 1rem;
+  min-width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+    text-decoration: none;
+}
+
+#load-more-btn:hover {
+  background: rgba(255, 179, 102, 0.2);
+  border-color: #ffd166;
+  color: #ffd166;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 179, 102, 0.3);
+}
+
+#load-more-btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* End of articles message */
+#end-of-articles {
+  background: rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+#end-of-articles p {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#end-of-articles i {
+  color: #4CAF50;
+  font-size: 1.2rem;
+}
+
+/* No articles message */
+#no-articles {
+  background: rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+#no-articles h4 {
+  color: #ffb366;
+  margin-bottom: 1rem;
+}
+
+#no-articles p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Infinite scroll trigger */
+#infinite-scroll-trigger {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pagination {
+    gap: 0.25rem;
+  }
+  
+  .pagination .page-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    min-width: 2.5rem;
+  }
+  
+  #load-more-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    min-width: 180px;
+  }
+  
+  .card-title, .news-title {
+  font-size: 1rem;
+  }
+  
+  .card-text, .news-fragment p, .mb-2 {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 576px) {
+.pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pagination .page-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    min-width: 2.25rem;
+  }
+  
+  #load-more-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+    min-width: 160px;
+  }
+  
+  .pagination .page-link i {
+    display: none;
+  }
+  
+  .container {
+    padding: 1rem 0;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+/* Ensure content is always visible */
+.row {
+  margin: 0;
+}
+
+.col-12, .col-md-6, .col-lg-4 {
+  padding: 0.5rem;
+}
+
+/* Override any problematic styles */
+.card, .news-card-class {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.card-title, .news-title, .card-text, .text-muted {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+} 

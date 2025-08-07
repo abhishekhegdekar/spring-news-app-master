@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html th:fragment="layout (template, menu)">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>PSNEWS</title>
+<link rel="shortcut icon" th:href="@{/images/psnews.png}"/>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+<script>
+    // Global dark mode and font size (run before page paint)
+    (function() {
+        const darkMode = localStorage.getItem('darkMode') === 'true';
+        if (darkMode) document.documentElement.classList.add('dark-mode');
+        else document.documentElement.classList.remove('dark-mode');
+        const fontSize = localStorage.getItem('fontSize') || 'medium';
+        document.documentElement.style.fontSize = fontSize === 'small' ? '14px' : fontSize === 'large' ? '20px' : '16px';
+    })();
+</script>
+
+</head>
+<body>
+
+	<!-- Simple Navigation -->
+	<nav class="navbar navbar-expand-md navbar-dark" style="background: rgba(0,0,0,0.8);">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/}" style="font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif; font-weight: bold; font-size: 1.5rem; letter-spacing: 0.05em; color: #FFA500;">
+				PSNEWS
+			</a>
+			<button type="button" class="navbar-toggler"
+				data-bs-toggle="collapse" data-bs-target="#main-navbar">
+				<span class="navbar-toggler-icon"> </span>
+			</button>
+			<div class="collapse navbar-collapse" id="main-navbar">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+					<li class="nav-item mt-2 mt-lg-0">
+						<a class="nav-link active" aria-current="page" th:href="@{/}" th:title="Home">
+							<i class="fa-solid fa-house fa-lg"></i> <span th:text="Home">Home</span>
+						</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link" id="categoriesDropdown" th:href="@{/}" th:title="Categories"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="fa-solid fa-grip fa-lg me-1"></i><span th:text="Categories">Categories</span>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="categoriesDropdown">
+							<a class="dropdown-item" th:href="@{/?category=Business}"><i class="fa-solid fa-business-time"></i> Business</a>
+							<a class="dropdown-item" th:href="@{/?category=Finance}"><i class="fa-solid fa-coins"></i> Finance</a>
+							<a class="dropdown-item" th:href="@{/?category=Food}"><i class="fa-solid fa-utensils"></i> Food</a>
+							<a class="dropdown-item" th:href="@{/?category=Health}"><i class="fa-solid fa-briefcase-medical"></i> Health</a>
+							<a class="dropdown-item" th:href="@{/?category=Music}"><i class="fa-solid fa-music"></i> Music</a>
+							<a class="dropdown-item" th:href="@{/?category=Sports}"><i class="fa-solid fa-football-ball"></i> Sports</a>
+							<a class="dropdown-item" th:href="@{/?category=Technology}"><i class="fa-solid fa-microchip"></i> Technology</a>
+							<a class="dropdown-item" th:href="@{/?category=Travel}"><i class="fa-solid fa-plane"></i> Travel</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Content -->
+	<main>
+		<div th:replace="${template}">
+			<!-- Content will be inserted here -->
+		</div>
+	</main>
+
+	<!-- Simple Footer -->
+	<footer class="text-center py-4" style="background: rgba(0,0,0,0.8); color: rgba(255,255,255,0.7);">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h5 style="color: #ffb366;">PSNEWS</h5>
+					<p class="mb-0">Cut the noise. Keep the news.</p>
+				</div>
+				<div class="col-md-6">
+					<div class="social-links">
+						<a href="https://www.linkedin.com/in/abhishek-hegdekar" target="_blank" style="color: #ffb366; margin: 0 10px; font-size: 1.5rem;" title="LinkedIn">
+							<i class="fa-brands fa-linkedin"></i>
+						</a>
+						<a href="https://github.com/abhishekhegdekar" target="_blank" style="color: #ffb366; margin: 0 10px; font-size: 1.5rem;" title="GitHub">
+							<i class="fa-brands fa-github"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<hr style="border-color: rgba(255,255,255,0.2);">
+			<p class="mb-0">&copy; 2025 PSNEWS. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- Back to Top Button -->
+	<button id="backToTop" class="btn btn-warning position-fixed" style="bottom: 20px; right: 20px; display: none; z-index: 1000;">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
+
+	<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
