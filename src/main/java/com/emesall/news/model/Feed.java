@@ -17,9 +17,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@Data
-@SuperBuilder
+@Getter
+@Setter
 @NoArgsConstructor
+@SuperBuilder
 @Entity
 public class Feed extends BaseEntity {
 
